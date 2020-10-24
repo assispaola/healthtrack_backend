@@ -1,5 +1,6 @@
 package br.com.fiap.model;
 
+
 import java.sql.Date;
 
 public class Usuario {
@@ -66,5 +67,6 @@ public class Usuario {
 	
 	
 }
+
 
 
