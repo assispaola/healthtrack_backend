@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.fiap.conexao.ConexaoBDManager;
@@ -34,6 +35,9 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 				String dsEmail = rs.getString("DS_EMAIL");
 				Date dtNascimento = rs.getDate("DT_NASCIMENTO");
 				Date dtCadastro = rs.getDate("DT_CADASTRO");
+//				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+//				Calendar dtCadastro = Calendar.getInstance();
+//				dtCadastro.setTimeInMillis(dtCad.getTime());
 				
 				Usuario usuario = new Usuario(idUsuario, dsSenha, dsEmail, dtNascimento, dtCadastro);
 				lista.add(usuario);
@@ -55,7 +59,28 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 
 	@Override
 	public void cadastrar(Usuario usuario) {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+		
+		try {
+			conexao = ConexaoBDManager.obterConexao();
+			String sql = "INSERT INTO T_HTL_USUARIO (ID_USUARIO, DS_SENHA, DS_EMAIL, DT_NASCIMENTO, DT_CADASTRO) VALUES(seq_usuario.nextval, ?, ?, ?, ?)";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, usuario.getDsSenha());
+			stmt.setString(2, usuario.getDsEmail());
+			stmt.setDate(3, usuario.getDtNascimento()); 
+			stmt.setDate(4, usuario.getDtCadastro());
+			stmt.executeUpdate();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 
