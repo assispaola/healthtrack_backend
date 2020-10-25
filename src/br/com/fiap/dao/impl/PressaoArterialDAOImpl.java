@@ -30,8 +30,8 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO{
 
 			while (rs.next()) {
 				Integer idPressaoArterial = rs.getInt("ID_PRESSAO");
-				Integer nrSistolica = rs.getInt("NR_SISTOLICA");
-				Integer nrDiastolica = rs.getInt("NR_DIASTOLICA");
+				Integer nrSistolica = rs.getInt("NR_SISTÓLICA");
+				Integer nrDiastolica = rs.getInt("NR_DIASTÓLICA");
 				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
 				Calendar dtCadastro = Calendar.getInstance();
 				dtCadastro.setTimeInMillis(dtCad.getTime());
