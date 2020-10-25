@@ -1,21 +1,19 @@
 package br.com.fiap.model;
 
-import java.util.Calendar;
+import java.sql.Date;
 
 public class Atividade {
 	
 
     private Integer idAtividade;
-    private Calendar dtCadastro;
+    private Date dtCadastro;
     private Integer vlTempo;
     private Double vlDistancia;
     private Integer idTipoAtv;
     private Integer idUsuario;
     
-    
-    
 
-    public Atividade(Integer idAtividade, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv,
+    public Atividade(Integer idAtividade, Date dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv,
 			Integer idUsuario) {
 		super();
 		this.idAtividade = idAtividade;
@@ -40,12 +38,12 @@ public class Atividade {
     }
 
 
-	public Calendar getDtCadastro() {
+	public Date getDtCadastro() {
 		return dtCadastro;
 	}
 
 
-	public void setDtCadastro(Calendar dtCadastro) {
+	public void setDtCadastro(Date dtCadastro) {
 		this.dtCadastro = dtCadastro;
 	}
 
@@ -88,8 +86,6 @@ public class Atividade {
 	public void setIdTipoAtv(Integer idTipoAtv) {
 		this.idTipoAtv = idTipoAtv;
 	}
-
-
 
 
 	public Integer getIdUsuario() {

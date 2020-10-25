@@ -51,26 +51,7 @@ public class CidadeDAOImpl implements CidadeDAO{
 
 	@Override
 	public void cadastrar(Cidade Cidade) {
-    PreparedStatement stmt = null;
-		
-		try {
-			conexao = ConexaoBDManager.obterConexao();
-			String sql = "INSERT INTO T_HTL_CIDADE (ID_CIDADE, DS_CIDADE) VALUES(seq_usuario.nextval, ?)";
-			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, Cidade.getDsCidade());
-			stmt.executeUpdate();
-			
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				stmt.close();
-				conexao.close();
-			} catch(SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		
+		// TODO Auto-generated method stub
 		
 	}
 
