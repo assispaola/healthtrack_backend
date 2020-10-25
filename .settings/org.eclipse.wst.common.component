@@ -2,6 +2,7 @@
     <wb-module deploy-name="HealthTrack">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/lib"/>
         <property name="context-root" value="HealthTrack"/>
         <property name="java-output-path" value="/HealthTrack/build/classes"/>
     </wb-module>
