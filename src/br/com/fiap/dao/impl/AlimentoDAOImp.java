@@ -1,7 +1,6 @@
 package br.com.fiap.dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,34 +8,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.conexao.ConexaoBDManager;
-import br.com.fiap.dao.UsuarioDAO;
-import br.com.fiap.model.Usuario;
+import br.com.fiap.dao.AlimentoDAO;
+import br.com.fiap.model.Almt;
 
-public class UsuarioDAOImpl implements UsuarioDAO{
-
+public class AlimentoDAOImp implements AlimentoDAO {
 	private Connection conexao;
 	
 	@Override
-	public List<Usuario> listarTodos() {
-		List<Usuario> lista = new ArrayList<Usuario>();
+	public List<Almt> listarTodos() {
+		List<Almt> lista = new ArrayList<Almt>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
 			conexao = ConexaoBDManager.obterConexao();
-			String sql = "SELECT * FROM T_HTL_USUARIO";
+			String sql = "SELECT * FROM T_HTL_ALMT";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
+			
+//			private int idAlimento;
+//			private String nmAlimento;
+//			private int qtAlimento;
+//			private double qtCaloria;
+//			private int idUsuario;
+//			private int idPeriodo;
+			
+			
 			while (rs.next()){
+				int idAlimento = rs.getInt("ID_ALIMENTO");
+				String nmAlimento = rs.getString("NM_ALIMENTO");
+				int qtAlimento = rs.getInt("QT_ALIMENTO");
+				double qtCaloria = rs.getDouble("QT_CALORIA");
 				int idUsuario = rs.getInt("ID_USUARIO");
-				String dsSenha = rs.getString("DS_SENHA");
-				String dsEmail = rs.getString("DS_EMAIL");
-				Date dtNascimento = rs.getDate("DT_NASCIMENTO");
-				Date dtCadastro = rs.getDate("DT_CADASTRO");
+				int idPeriodo = rs.getInt("ID_PERIODO");
 				
-				Usuario usuario = new Usuario(idUsuario, dsSenha, dsEmail, dtNascimento, dtCadastro);
-				lista.add(usuario);
+				Almt alimento = new Almt(idAlimento, nmAlimento, qtAlimento, qtCaloria, idUsuario, idPeriodo);
+				lista.add(alimento);
 			}
 						
 		} catch(SQLException e) {
@@ -54,29 +62,27 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 	}
 
 	@Override
-	public void cadastrar(Usuario usuario) {
+	public void cadastrar(Almt almt) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Usuario usuario) {
+	public void atualizar(Almt almt) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void remover(int idUsuario) {
+	public void remover(int idAlmt) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Usuario buscarPorId(int idUsuario) {
+	public Almt buscarPorId(int idAlmt) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
-	
 }
