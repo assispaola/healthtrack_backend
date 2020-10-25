@@ -12,8 +12,8 @@ import br.com.fiap.conexao.ConexaoBDManager;
 import br.com.fiap.dao.PressaoArterialDAO;
 import br.com.fiap.model.PressaoArterial;
 
-public class PressaoArterialDAOImpl implements PressaoArterialDAO{
-	
+public class PressaoArterialDAOImpl implements PressaoArterialDAO {
+
 	private Connection conexao;
 
 	@Override
@@ -61,20 +61,43 @@ public class PressaoArterialDAOImpl implements PressaoArterialDAO{
 
 	@Override
 	public void cadastrar(PressaoArterial pressaoArterial) {
-		// TODO Auto-generated method stub
-		
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.obterConexao();
+			String sql = "INSERT INTO T_HTL_PRESSAO (ID_PRESSAO, NR_SISTOLICA, NR_DIASTOLICA, DT_CADASTRO,"
+					+ " T_HTL_USUARIO_ID_USUARIO) VALUES (SEQ_PRESSAOARTERIAL.NEXTVAL, ?, ?, ?, ?)";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, pressaoArterial.getNrSistolica());
+			stmt.setInt(2, pressaoArterial.getNrDiastolica());
+			java.sql.Date dataAtual = new java.sql.Date(pressaoArterial.getDtCadastro().getTimeInMillis());
+			stmt.setDate(3, dataAtual);
+			stmt.setInt(4, pressaoArterial.getIdUsuario());
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 
 	@Override
 	public void atualizar(PressaoArterial pressaoArterial) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void remover(int idPressaoArterial) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override

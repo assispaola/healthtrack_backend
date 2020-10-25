@@ -63,7 +63,31 @@ public class AlimentoDAOImp implements AlimentoDAO {
 
 	@Override
 	public void cadastrar(Almt almt) {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+
+		try {
+			conexao = ConexaoBDManager.obterConexao();
+			String sql = "INSERT INTO T_HTL_ALMT (ID_ALIMENTO, NM_ALIMENTO, QT_ALIMENTO, QT_CALORIA,"
+					+ " T_HTL_USUARIO_ID_USUARIO, T_HTL_PERIODO_ID_PERIODO) VALUES (SEQ_ALIMENTO.NEXTVAL, ?, ?, ?, ?, ?)";
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, almt.getNmAlimento());
+			stmt.setInt(2, almt.getQtAlimento());
+			stmt.setDouble(3, almt.getQtCaloria());
+			stmt.setInt(4, almt.getIdUsuario());
+			stmt.setInt(5, almt.getIdPeriodo());
+			stmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				stmt.close();
+				conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
 		
 	}
 
