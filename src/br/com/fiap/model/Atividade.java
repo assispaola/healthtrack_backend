@@ -10,13 +10,12 @@ public class Atividade {
     private Integer vlTempo;
     private Double vlDistancia;
     private Integer idTipoAtv;
-    private String dsTipoAtv;
     private Integer idUsuario;
     
     
     
 
-    public Atividade(Integer idAtividade, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv, String dsTipoAtv,
+    public Atividade(Integer idAtividade, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv,
 			Integer idUsuario) {
 		super();
 		this.idAtividade = idAtividade;
@@ -24,7 +23,6 @@ public class Atividade {
 		this.vlTempo = vlTempo;
 		this.vlDistancia = vlDistancia;
 		this.idTipoAtv = idTipoAtv;
-		this.dsTipoAtv = dsTipoAtv;
 		this.idUsuario = idUsuario;
 	}
     
@@ -92,14 +90,6 @@ public class Atividade {
 	}
 
 
-	public String getDsTipoAtv() {
-		return dsTipoAtv;
-	}
-
-
-	public void setDsTipoAtv(String dsTipoAtv) {
-		this.dsTipoAtv = dsTipoAtv;
-	}
 
 
 	public Integer getIdUsuario() {
