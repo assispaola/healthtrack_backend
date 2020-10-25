@@ -21,7 +21,7 @@ public class Teste {
 		Usuario user = new Usuario();
 		user.setDsEmail("assispaola.dev@gmail.com");
 		user.setDsSenha("111193");
-//		user.setDtCadastro(Calendar.getInstance());
+
 		String data = "01/02/2020";                                
         Date dataf = parser.parse(data);            
         java.sql.Date dataSql = new java.sql.Date(dataf.getTime());
