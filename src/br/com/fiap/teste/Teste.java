@@ -11,6 +11,23 @@ public class Teste {
 		// TODO Auto-generated method stub
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
 		List<Usuario> lista = dao.listarTodos();
+
+		Usuario user = new Usuario();
+		user.setDsEmail("assispaola.dev@gmail.com");
+		user.setDsSenha("111193");
+
+		String data = "01/02/2020";                                
+        Date dataf = parser.parse(data);            
+        java.sql.Date dataSql = new java.sql.Date(dataf.getTime());
+        user.setDtNascimento(dataSql);
+        
+        String data2 = "01/02/2020";                                
+        Date dataf2 = parser.parse(data2);            
+        java.sql.Date dataSql2 = new java.sql.Date(dataf2.getTime());
+        user.setDtCadastro(dataSql2);
+        dao.cadastrar(user); 
+		System.out.println("Cadastrei...");
+		
 		
 		for (Usuario usuario: lista) {
 			
