@@ -5,46 +5,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.fiap.conexao.ConexaoBDManager;
-import br.com.fiap.dao.AlimentoDAO;
-import br.com.fiap.model.Almt;
+import br.com.fiap.dao.AtividadeDAO;
+import br.com.fiap.model.Atividade;
 
-public class AlimentoDAOImp implements AlimentoDAO {
+public class AtividadeDAOImp implements AtividadeDAO {
 	private Connection conexao;
-	
+
 	@Override
-	public List<Almt> listarTodos() {
-		List<Almt> lista = new ArrayList<Almt>();
+	public List<Atividade> listarTodos() {
+		List<Atividade> lista = new ArrayList<Atividade>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
 			conexao = ConexaoBDManager.obterConexao();
-			String sql = "SELECT * FROM T_HTL_ALMT";
+			String sql = "SELECT * FROM T_HTL_ATV";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
 			
-//			private int idAlimento;
-//			private String nmAlimento;
-//			private int qtAlimento;
-//			private double qtCaloria;
-//			private int idUsuario;
-//			private int idPeriodo;
-			
 			
 			while (rs.next()){
-				int idAlimento = rs.getInt("ID_ALIMENTO");
-				String nmAlimento = rs.getString("NM_ALIMENTO");
-				int qtAlimento = rs.getInt("QT_ALIMENTO");
-				double qtCaloria = rs.getDouble("QT_CALORIA");
+				int idAtividade = rs.getInt("ID_ATV");
+				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
+				Calendar dtCadastro = Calendar.getInstance();
+				dtCadastro.setTimeInMillis(dtCad.getTime());
+				int vlTempo = rs.getInt("VL_TEMPO");
+				double vlDistancia = rs.getDouble("VL_DISTANCIA");
+				int idTipoAtv = rs.getInt("T_HTL_TIPOATV_ID_TIPOATV");
 				int idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
-				int idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
 				
-				Almt alimento = new Almt(idAlimento, nmAlimento, qtAlimento, qtCaloria, idUsuario, idPeriodo);
-				lista.add(alimento);
+				Atividade atividade = new Atividade(idAtividade, dtCadastro, vlTempo, vlDistancia, idTipoAtv, idUsuario);
+				lista.add(atividade);
 			}
 						
 		} catch(SQLException e) {
@@ -60,29 +56,31 @@ public class AlimentoDAOImp implements AlimentoDAO {
 		}
 		return lista;
 	}
+	
 
 	@Override
-	public void cadastrar(Almt almt) {
+	public void cadastrar(Atividade atividade) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Almt almt) {
+	public void atualizar(Atividade atividade) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void remover(int idAlmt) {
+	public void remover(int idAtividade) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Almt buscarPorId(int idAlmt) {
+	public Atividade buscarPorId(int idAtividade) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
+	
+	

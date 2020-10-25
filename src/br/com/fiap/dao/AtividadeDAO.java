@@ -5,6 +5,7 @@ import java.util.List;
 import br.com.fiap.model.Atividade;
 
 public interface AtividadeDAO {
+	
 	public List<Atividade> listarTodos();
 	
 	public void cadastrar(Atividade atividade);

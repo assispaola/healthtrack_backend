@@ -8,43 +8,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.fiap.conexao.ConexaoBDManager;
-import br.com.fiap.dao.AlimentoDAO;
-import br.com.fiap.model.Almt;
+import br.com.fiap.dao.EndCompDAO;
+import br.com.fiap.model.EndComp;
 
-public class AlimentoDAOImp implements AlimentoDAO {
+
+public class EndCompDAOImpl implements EndCompDAO {
+
 	private Connection conexao;
 	
 	@Override
-	public List<Almt> listarTodos() {
-		List<Almt> lista = new ArrayList<Almt>();
+	public List<EndComp> listarTodos() {
+		List<EndComp> lista = new ArrayList<EndComp>();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		
 		try {
 			conexao = ConexaoBDManager.obterConexao();
-			String sql = "SELECT * FROM T_HTL_ALMT";
+			String sql = "SELECT * FROM T_HTL_ENDCOMP";
 			stmt = conexao.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
-			
-//			private int idAlimento;
-//			private String nmAlimento;
-//			private int qtAlimento;
-//			private double qtCaloria;
-//			private int idUsuario;
-//			private int idPeriodo;
-			
-			
 			while (rs.next()){
-				int idAlimento = rs.getInt("ID_ALIMENTO");
-				String nmAlimento = rs.getString("NM_ALIMENTO");
-				int qtAlimento = rs.getInt("QT_ALIMENTO");
-				double qtCaloria = rs.getDouble("QT_CALORIA");
+				int idEndComp = rs.getInt("ID_ENDCOMPLETO");
 				int idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
-				int idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
+				int idCep = rs.getInt("T_HTL_CEP_ID_CEP");
 				
-				Almt alimento = new Almt(idAlimento, nmAlimento, qtAlimento, qtCaloria, idUsuario, idPeriodo);
-				lista.add(alimento);
+				EndComp endcomp = new EndComp(idEndComp, idUsuario, idCep);
+				lista.add(endcomp);
 			}
 						
 		} catch(SQLException e) {
@@ -62,25 +52,25 @@ public class AlimentoDAOImp implements AlimentoDAO {
 	}
 
 	@Override
-	public void cadastrar(Almt almt) {
+	public void cadastrar(EndComp endComp) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void atualizar(Almt almt) {
+	public void atualizar(EndComp endComp) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void remover(int idAlmt) {
+	public void remover(int idEndComp) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public Almt buscarPorId(int idAlmt) {
+	public EndComp buscarPorId(int idEndComp) {
 		// TODO Auto-generated method stub
 		return null;
 	}
