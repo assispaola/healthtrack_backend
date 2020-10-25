@@ -40,8 +40,8 @@ public class AlimentoDAOImp implements AlimentoDAO {
 				String nmAlimento = rs.getString("NM_ALIMENTO");
 				int qtAlimento = rs.getInt("QT_ALIMENTO");
 				double qtCaloria = rs.getDouble("QT_CALORIA");
-				int idUsuario = rs.getInt("ID_USUARIO");
-				int idPeriodo = rs.getInt("ID_PERIODO");
+				int idUsuario = rs.getInt("T_HTL_USUARIO_ID_USUARIO");
+				int idPeriodo = rs.getInt("T_HTL_PERIODO_ID_PERIODO");
 				
 				Almt alimento = new Almt(idAlimento, nmAlimento, qtAlimento, qtCaloria, idUsuario, idPeriodo);
 				lista.add(alimento);
