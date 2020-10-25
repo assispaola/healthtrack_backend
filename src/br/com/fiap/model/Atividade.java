@@ -15,7 +15,11 @@ public class Atividade {
     
     
 
+<<<<<<< HEAD
     public Atividade(Integer idAtividade, Date dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv,
+=======
+    public Atividade(Integer idAtividade, Calendar dtCadastro, Integer vlTempo, Double vlDistancia, Integer idTipoAtv,
+>>>>>>> 2dd897ad0bb0260891c825eb57d0801d97d65202
 			Integer idUsuario) {
 		super();
 		this.idAtividade = idAtividade;
@@ -90,6 +94,11 @@ public class Atividade {
 	}
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 2dd897ad0bb0260891c825eb57d0801d97d65202
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
