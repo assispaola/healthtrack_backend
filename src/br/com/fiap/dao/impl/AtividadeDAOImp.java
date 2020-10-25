@@ -1,11 +1,11 @@
 package br.com.fiap.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.fiap.conexao.ConexaoBDManager;
@@ -31,9 +31,7 @@ public class AtividadeDAOImp implements AtividadeDAO {
 			
 			while (rs.next()){
 				int idAtividade = rs.getInt("ID_ATV");
-				java.sql.Date dtCad = rs.getDate("DT_CADASTRO");
-				Calendar dtCadastro = Calendar.getInstance();
-				dtCadastro.setTimeInMillis(dtCad.getTime());
+				Date dtCadastro = rs.getDate("DT_CADASTRO");
 				int vlTempo = rs.getInt("VL_TEMPO");
 				double vlDistancia = rs.getDouble("VL_DISTANCIA");
 				int idTipoAtv = rs.getInt("T_HTL_TIPOATV_ID_TIPOATV");

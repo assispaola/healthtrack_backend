@@ -1,6 +1,5 @@
 package br.com.fiap.dao;
 
-import java.util.Date;
 import java.util.List;
 
 import br.com.fiap.model.Usuario;
@@ -15,5 +14,4 @@ public interface UsuarioDAO {
 	public void remover(int idUsuario);
 	
 	public Usuario buscarPorId(int idUsuario);
-
 }
