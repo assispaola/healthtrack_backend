@@ -1,14 +1,16 @@
 package br.com.fiap.teste;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
-
 import br.com.fiap.dao.impl.UsuarioDAOImpl;
 import br.com.fiap.model.Usuario;
 
 public class Teste {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws ParseException{
+		SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
 		UsuarioDAOImpl dao = new UsuarioDAOImpl();
 		List<Usuario> lista = dao.listarTodos();
 
